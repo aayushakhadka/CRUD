@@ -2,7 +2,7 @@
 @section('content')
 <div>
     <table>
-        @foreach($categories as $item)
+        @foreach($categories as $key => $item)
         <tr>
             <td>{{$item->name}}</td>
             <td><a href="/categories/edit/{{$item->id}}">Edit</a></td>

@@ -12,7 +12,7 @@ class CategoryController extends Controller
 {
     use FileStorage;
 
-    public function index()
+    public function index(Request $request)
     {
         $categories = Category::all();
         return view('/categories/index', ['categories' => $categories]);
@@ -22,6 +22,7 @@ class CategoryController extends Controller
     {
         return view('categories/create');
     }
+
     public function store(Request $request)
     {
         Category::create($request->except('photo') + [
@@ -30,11 +31,7 @@ class CategoryController extends Controller
         return redirect('/categories');
     }
 
-    public function  submit(Request $request)
-    {
-        echo ('<pre>');
-        print_r($request->all());
-    }
+
     public function edit($id)
     {
         $category = Category::find($id);
